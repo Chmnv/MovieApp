@@ -1,4 +1,4 @@
-const API_KEY = "028f8a1c-bb5f-4986-a2c4-f22e5eca559c";
+const API_KEY = "273b43c3-283f-4a80-a0ec-76679aa1dbc7";
 const API_URL_POPULAR =
   "https://kinopoiskapiunofficial.tech/api/v2.2/films/collections?type=TOP_POPULAR_ALL";
 const API_URL_SEARCH =
@@ -45,16 +45,16 @@ function showMovies(data) {
     movieEl.dataset.id = movie.kinopoiskId || movie.filmId;
 
     movieEl.innerHTML = `
-      <div class="movie__cover-inner">
-        <img src="${movie.posterUrlPreview}" class="movie__cover"alt="${title}"/>
-        <div class="movie__cover--darkened"></div>
-      </div>
+        <div class="movie__cover-inner">
+          <img src="${movie.posterUrlPreview}" class="movie__cover"alt="${title}"/>
+          <div class="movie__cover--darkened"></div>
+        </div>
 
-      <div class="movie__info">
-        <div class="movie__title">${title}</div>
-        <div class="movie__category">${movie.genres?.map((genre) => genre.genre).join(", ") || ""}</div>
-        ${rating ? `<div class="movie__average movie__average--${getClassByRate(rating)}">${rating}</div>` : ""}
-      </div>`;
+        <div class="movie__info">
+          <div class="movie__title">${title}</div>
+          <div class="movie__category">${movie.genres?.map((genre) => genre.genre).join(", ") || ""}</div>
+          ${rating ? `<div class="movie__average movie__average--${getClassByRate(rating)}">${rating}</div>` : ""}
+        </div>`;
     moviesEl.appendChild(movieEl);
   });
 }
@@ -91,22 +91,22 @@ async function openModal(id) {
   document.body.classList.add("stop-scrolling");
 
   modalEl.innerHTML = `
-    <div class="modal__card">
-      <img class="modal__movie-backdrop" src="${respData.posterUrl}" alt="">
-      <h2>
-        <span class="modal__movie-title">${title}</span>
-        <span class="modal__movie-release-year"> - ${respData.year}</span>
-      </h2>
+      <div class="modal__card">
+        <img class="modal__movie-backdrop" src="${respData.posterUrl}" alt="">
+        <h2>
+          <span class="modal__movie-title">${title}</span>
+          <span class="modal__movie-release-year"> - ${respData.year}</span>
+        </h2>
 
-      <ul class="modal__movie-info">
-        <li class="modal__movie-genre">Genre - ${respData.genres.map((el) => `<span>${el.genre}</span>`).join(", ")}</li>
-        ${respData.filmLength ? `<li class="modal__movie-runtime">Time - ${respData.filmLength} min</li>` : ""}
-        <li>Site: <a class="modal__movie-site" href="${respData.webUrl}">${respData.webUrl}</a></li>
-        <li class="modal__movie-overview">Description - ${respData.description}</li>
-      </ul>
-      <button type="button" class="modal__button-close">Close</button>
-    </div>
-  `;
+        <ul class="modal__movie-info">
+          <li class="modal__movie-genre">Genre - ${respData.genres.map((el) => `<span>${el.genre}</span>`).join(", ")}</li>
+          ${respData.filmLength ? `<li class="modal__movie-runtime">Time - ${respData.filmLength} min</li>` : ""}
+          <li>Site: <a class="modal__movie-site" href="${respData.webUrl}">${respData.webUrl}</a></li>
+          <li class="modal__movie-overview">Description - ${respData.description}</li>
+        </ul>
+        <button type="button" class="modal__button-close">Close</button>
+      </div>
+    `;
 
   const btnClose = document.querySelector(".modal__button-close");
   btnClose.addEventListener("click", () => closeModal());
