@@ -51,7 +51,7 @@ function startCountdown() {
 
         if (distance < 0) {
             clearInterval(countdownInterval);
-            document.querySelector(".countdown").innerHTML = "<h4 class='expired'>Время вышло!</h4>";
+            document.querySelector(".countdown").innerHTML = "<h4 class='expired'>Time's up!</h4>";
             localStorage.removeItem("authCountdownEnd");
             return;
         }
