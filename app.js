@@ -135,3 +135,4 @@ document.querySelector(".movies").addEventListener("click", (e) => {
     openModal(movieEl.dataset.id);
   }
 });
+
